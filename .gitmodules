@@ -1,3 +1,6 @@
 [submodule "Arduino-PID-Library"]
 	path = Arduino-PID-Library
 	url = https://github.com/br3ttb/Arduino-PID-Library.git
+[submodule "PinChangeInt"]
+	path = PinChangeInt
+	url = https://github.com/asheeshr/PinChangeInt
