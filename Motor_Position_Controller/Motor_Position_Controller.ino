@@ -14,7 +14,11 @@ const int encoderPinB = 3; // Encoder input B (if needed for your encoder)
 
 double Setpoint, Input, Output;
 double Kp = 2, Ki = 0.001, Kd = 1; // These will need to be tuned for your system
-
+int upovershoot;
+int downovershoot;
+int dirChange;
+int currOutput;
+int lastOutput;
 
 // PID controller
 PID myPID(&Input, &Output, &Setpoint, Kp, Ki, Kd, DIRECT);
@@ -52,6 +56,7 @@ void setup() {
 
   // Set an initial setpoint
   Setpoint = 2000;
+  lastOutput = -40;
 }
 
 void loop() {
@@ -68,6 +73,7 @@ void loop() {
   }
 
   // Check if the current position is within a reasonable range of the setpoint
+  
   if((Setpoint - encoderPosition <= 100) && (Output == 40)){
     Output = -40;
     Setpoint = 0;
